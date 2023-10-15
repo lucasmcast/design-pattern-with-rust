@@ -6,7 +6,7 @@ use cursive::{
     Cursive
 };
 
-use command::{Command, CutCommand};
+use command::{Command, CutCommand, CopyCommand, PasteCommand};
 
 #[derive(Default)]
 struct AppContext {
@@ -23,6 +23,8 @@ fn main() {
         Dialog::around(EditView::default().with_name("Editor"))
         .title("Type and use buttons")
         .button("Cut", |s| execute(s, CutCommand::default()))
+        .button("Copy", |s| execute(s, CopyCommand::default()))
+        .button("Paste", |s| execute(s, PasteCommand::default()))
         .button("Undo", undo)
         .button("Quit", |s| s.quit())
     );
